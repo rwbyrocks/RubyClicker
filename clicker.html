@@ -1,0 +1,231 @@
+<head>
+	<title>RWBY.ROCKS</title>
+	<meta charset="UTF-8"> 
+	<meta property="og:image" content="/img/Ruby.png">
+	<meta name="description" content="The best clicker idle game ever made">
+	<meta name="keywords" content="RWBY, Ruby, Weiss, Blake, Yang, Clicker, Idle, Game">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link rel="stylesheet" href="clicker.css">
+</head>
+
+<script src="HackTimer.silent.min.js"></script> 
+
+<script>
+function setCookie(cName, cValue) {
+    let date = new Date();
+    document.cookie = cName + "=" + cValue + "; " + "; path=/;";
+} 
+
+function getCookie(c_name) {
+    var c_value = " " + document.cookie;
+    var c_start = c_value.indexOf(" " + c_name + "=");
+    if (c_start == -1) {
+        c_value = null;
+    }
+    else {
+        c_start = c_value.indexOf("=", c_start) + 1;
+        var c_end = c_value.indexOf(";", c_start);
+        if (c_end == -1) {
+            c_end = c_value.length;
+        }
+        c_value = unescape(c_value.substring(c_start,c_end));
+    }
+    return c_value;
+}
+
+function numberWithCommas(x) {
+    return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+}
+
+cookie = getCookie("cookie");
+    if (cookie == null) {
+        document.getElementById('cookiewarning').innerHTML = "Test";
+    }
+    console.log(cookie);
+</script>
+
+<div id="cookiewarning">
+
+</div>
+
+<div class="sidebar">
+
+    <div class="button" onclick="
+        if (rubies >= 50) {
+            rubies = rubies - 50;
+            weiss++;
+            rps = +rps + 1;
+            setCookie('rps', rps);
+            document.getElementById('weiss').innerHTML = weiss;
+            rubies = parseFloat(rubies).toFixed(2);
+            document.getElementById('counter').innerHTML = numberWithCommas(rubies);
+            document.getElementById('rps').innerHTML = rps;
+            setCookie('weiss', weiss);
+        }
+    ">
+        <img class="icon" src="/img/weiss.png">
+
+        <p id="weiss" class="count">
+            0
+        </p>
+
+        <p class="title">
+            Weiss
+        </p>
+        <p class="desc">
+            shes uh white <br>
+            Cost: 50 Rubies <br>
+            +1 rps <br>
+            Buy 50 Weiss' to unlock Calm Down Weiss!
+        </p>
+    </div>
+
+    <div class="button" onclick="
+        if (rubies >= 200) {
+            rubies = rubies - 200;
+            blake++;
+            rps = +rps + 5;
+            setCookie('rps', rps);
+            document.getElementById('blake').innerHTML = blake;
+            rubies = parseFloat(rubies).toFixed(2);
+            document.getElementById('counter').innerHTML = numberWithCommas(rubies);
+            document.getElementById('rps').innerHTML = rps;
+            setCookie('blake', blake);
+        }
+    ">
+        <img class="icon" src="/img/blake.png">
+
+        <p id="blake" class="count">
+            0
+        </p>
+
+        <p class="title">
+            Blake
+        </p>
+        <p class="desc">
+            book <br>
+            Cost: 200 Rubies <br>
+            +5 rps<br>
+            Buy 50 Blakes to unlock Blake's Tuna Clicker!
+        </p>
+    </div>
+
+
+    <div class="button" onclick="
+        if (rubies >= 500) {
+            rubies = rubies - 500;
+            yang++;
+            rps = +rps + 15;
+            setCookie('rps', rps);
+            document.getElementById('yang').innerHTML = yang;
+            rubies = parseFloat(rubies).toFixed(2);
+            document.getElementById('counter').innerHTML = numberWithCommas(rubies);
+            document.getElementById('rps').innerHTML = rps;
+            setCookie('yang', yang);
+        }
+    ">
+        <img class="icon" src="/img/yang.png">
+
+        <p id="yang" class="count">
+            0
+        </p>
+
+        <p class="title">
+            Yang
+        </p>
+        <p class="desc">
+            punch <br>
+            Cost: 500 Rubies <br>
+            +15 rps<br>
+            Buy 50 Yangs to unlock Yangs's Grimm Puncher!
+        </p>
+    </div>
+
+</div>
+
+<script>
+
+let weiss = getCookie("weiss");
+    if (weiss == null) {
+        let weiss = 0;
+        document.getElementById('weiss').innerHTML = weiss;
+    } else {
+        let weiss = getCookie("weiss");
+        document.getElementById('weiss').innerHTML = weiss;
+    }
+
+let blake = getCookie("blake");
+    if (blake == null) {
+        let blake = 0;
+        document.getElementById('blake').innerHTML = blake;
+    } else {
+        let blake = getCookie("blake");
+        document.getElementById('blake').innerHTML = blake;
+    }
+
+let yang = getCookie("yang");
+    if (yang == null) {
+        let yang = 0;
+        document.getElementById('yang').innerHTML = yang;
+    } else {
+        let yang = getCookie("yang");
+        document.getElementById('yang').innerHTML = yang;
+    }
+
+</script>
+
+
+<h1 style="display: inline-block; margin: 0 15 0 15;">Rubies: <h1 id="counter" style="display: inline-block;">0</h1> </h1><br>
+<p style="display: inline-block; margin-left: 15px; margin-top: 0;">RPS:</p><p style="display: inline-block; margin: 0 15 0 15;" id="rps">0</p>
+<script>
+    let rubies = getCookie("rubies");
+    if (rubies == "null") {
+        let rubies = 0;
+    } else {
+        let rubies = getCookie("rubies");
+    }
+
+    document.getElementById('counter').innerHTML = numberWithCommas(rubies);
+
+</script>
+
+<a id="ruby_img" onclick="
+    rubies++;
+    rubies = parseFloat(rubies).toFixed(2);
+    getElementById('counter').innerHTML = numberWithCommas(rubies);
+    var object = document.getElementById('ruby_img');
+    object.style.transform = 'scale(1.2)';
+    setTimeout(() => { object.style.transform = 'scale(1)'; }, 50);
+
+    var snd = new Audio('click.wav'); // buffers automatically when created
+    snd.play();
+
+    setCookie('rubies', rubies);
+
+" class="ruby">
+    <img id="ruby_img" src="/img/ruby.png" alt="Ruby" style="height: 300px; transform: scale(1);">
+</a>
+
+
+<script>
+    let rps = getCookie("rps");
+    if (rps == null) {
+        rps = 0;
+        document.getElementById('rps').innerHTML = rps;
+    } else {
+        rps = getCookie("rps");
+        document.getElementById('rps').innerHTML = rps;
+    }
+</script>
+
+<script>
+
+var AddRPS = window.setInterval(Update, 33.3);
+    function Update() {
+        rubies = +rubies + +rps / 30;
+        rubies = parseFloat(rubies).toFixed(2);
+        document.getElementById('counter').innerHTML = numberWithCommas(rubies);
+        setCookie('rubies', rubies);
+}
+
+</script>
